@@ -52,3 +52,11 @@ modules: [
 | `maximumEntries `        | *Optional* Maximum number of entries in list <br><br>**Type:** `int` <br>Default 10
 | `minWalkingTime `        | *Optional* Minimum time in minutes to reach the `stop` station. Used to highlight a connection in red in case cannot be reached in time <br><br>**Type:** `int` <br>Default -1
 | `hideTrackInfo`        | *Optional* Hide the track column <br><br>**Type:** `int` <br>Default 0
+
+## Dependencies
+
+This module uses the <https://fahrplan.search.ch> API Which is free for up to 1000 Calls per day and does not require a key.
+
+## Troubleshooting
+
+I try to maintain this module in best effort. If there is any Problem, please write a detailed description into this forum and i will try to look into it as soon as possible: <https://forum.magicmirror.builders/topic/6342/mmm-swissstationboard>
