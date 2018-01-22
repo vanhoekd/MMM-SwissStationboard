@@ -8,6 +8,10 @@ This module is based on the search.ch Fahrplan API <https://fahrplan.search.ch/a
 
 Special thanks to nixnuex <https://github.com/nixnuex/MMM-SwissCommute>
 
+## Example
+
+![](.github/Stationboard.PNG) ![](.github/Stationboard.PNG)
+
 ## Using the module
 
 To use this module, add the following configuration block to the modules array in the `config/config.js` file:
