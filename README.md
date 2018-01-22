@@ -11,6 +11,21 @@ Special thanks to nixnuex <https://github.com/nixnuex/MMM-SwissCommute>
 ## Example
 
 ![Stationboard](https://github.com/vanhoekd/MMM-SwissStationboard/blob/master/Stationboard.PNG)
+
+### Installation
+
+Navigate into your MagicMirror's modules folder:
+
+```shell
+cd ~/MagicMirror/modules
+```
+Clone this repository:
+```shell
+git clone https://github.com/vanhoekd/MMM-SwissStationboard
+```
+Configure the module in your config.js file.
+
+
 ## Using the module
 
 To use this module, add the following configuration block to the modules array in the `config/config.js` file:
@@ -21,7 +36,7 @@ modules: [
 		position: 'bottom_left',
 		header: 'Train Connections',
 		config: {
-			stop: 'Zürich HB', // Start train station
+			stop: 'Bern', // Start train station
 			maximumEntries: 4, // Max departures displayed
 			minWalkingTime: 10 // Minimum time to get to the station
 		}
