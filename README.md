@@ -50,7 +50,7 @@ modules: [
 |----------------- |-----------
 | `stop`        | *Required* Departure station or its ID. can by found through <https://fahrplan.search.ch/api/stationboard.json?limit=1&stop=Einsiedeln>
 | `maximumEntries `        | *Optional* Maximum number of entries in list <br><br>**Type:** `int` <br>Default 10
-| `minWalkingTime `        | *Optional* Minimum time in minutes to reach the `stop` station. Used to highlight a connection in red in case cannot be reached in time <br><br>**Type:** `int` <br>Default -1
+| `minWalkingTime `        | *Optional* Minimum time in minutes to reach the `stop` station. Used to display the connection in dark grey in case it is not reachable in time<br><br>**Type:** `int` <br>Default -1
 | `hideTrackInfo`        | *Optional* Hide the track column <br><br>**Type:** `int` <br>Default 0
 
 ## Dependencies

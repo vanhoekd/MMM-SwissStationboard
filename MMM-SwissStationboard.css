@@ -1,24 +1,27 @@
 /*
  *
- * MMM-SwissCommute by nixnuex
+ * MMM-SwissStationboard by vanhoekd
  *
  * MIT Licensed.
  *
  */
 
-.MMM-SwissCommute {
-  font-size: 75%;
-  line-height: 65px;
-  display: inline-block;
+.MMM-SwissStationboard {
+  font-size: 65%;
+  //line-height: 65px;
   -ms-transform: translate(0, -3px); /* IE 9 */
   -webkit-transform: translate(0, -3px); /* Safari */
   transform: translate(0, -3px);
 }
 
-.MMM-SwissCommute table {
-    width: 350px;
+.MMM-SwissStationboard table {
+    width: 400px;
 }
 
-.MMM-SwissCommute .red {
+.MMM-SwissStationboard .red {
     color: #FF0000
+}
+
+.MMM-SwissStationboard .darkgrey {
+    color: #424242
 }

@@ -107,8 +107,8 @@ Module.register("MMM-SwissStationboard",{
 			depCell.className = "align-left departuretime";
 			depCell.innerHTML = trains.departureTimestamp;
 
-			if (diff <= this.config.minWalkingTime ){
-				row.className = "red";
+			if (diff < this.config.minWalkingTime ){
+				row.className = "darkgrey";
 			}
 
 			row.appendChild(depCell);
@@ -134,7 +134,8 @@ Module.register("MMM-SwissStationboard",{
             if (!this.config.hideTrackInfo) {
 	            var trackCell = document.createElement("td");
     	        trackCell.innerHTML = trains.track;
-        	    if(trains.trackChange) trackCell.className = "track red";
+				trackCell.className = "align-right";
+        	    if(trains.trackChange) trackCell.className = "align-right track red";
             	row.appendChild(trackCell);
             }
 
