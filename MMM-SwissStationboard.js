@@ -126,7 +126,15 @@ Module.register("MMM-SwissStationboard",{
 			
 			// Number
 			var trainNumberCell = document.createElement("td");
-			trainNumberCell.innerHTML = "<i class=\"fa fa-train\"></i> " + trains.number;
+			if (trains.type.localeCompare("bus")==0 || trains.type.localeCompare("post")==0){
+				trainNumberCell.innerHTML = "<i class=\"fa fa-bus\"></i> " + trains.number;
+			} else if(trains.type.localeCompare("tram")==0){
+				trainNumberCell.innerHTML = "<i class=\"fa fa-subway\"></i> " + trains.number;
+			}else if(trains.type.localeCompare("strain")==0 || trains.type.localeCompare("express_train")==0){
+				trainNumberCell.innerHTML = "<i class=\"fa fa-train\"></i> " + trains.number;
+			}else{
+				trainNumberCell.innerHTML = "<i class=\"fa fa-rocket\"></i> " + trains.number;
+			}
 			trainNumberCell.className = "align-left";
 			row.appendChild(trainNumberCell);
 			
@@ -232,7 +240,8 @@ Module.register("MMM-SwissStationboard",{
 						delay: parseInt(trains.dep_delay),
 						to: trains.terminal.name,
 						number: trains.line,
-						track: trains.track
+						track: trains.track,
+						type: trains.type
 					};
 				
 					if (typeof conn.track != 'undefined') {
