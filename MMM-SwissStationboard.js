@@ -25,6 +25,7 @@ Module.register("MMM-SwissStationboard",{
 		maximumEntries: 5, // Total Maximum Entries
         minWalkingTime: -1,
         hideTrackInfo: 0,
+	hideNotReachable: 0,
                 
 //		titleReplace: {
 //			"Zeittabelle ": ""
@@ -92,24 +93,44 @@ Module.register("MMM-SwissStationboard",{
 		
 		var table = document.createElement("table");
 		table.className = "small";
+		var displayedConnections = 0;
 
 		for (var t in this.trains) {
 			var trains = this.trains[t];
 
+			var dTime = moment(trains.departureTimestampRaw);
+			var diff = dTime.diff(currentTime, 'minutes');
+			if(this.config.hideNotReachable){
+				if(trains.delay > 0){
+					if (diff + trains.delay < this.config.minWalkingTime ){
+					continue;
+					}
+				} else if (diff < this.config.minWalkingTime ){
+					continue;
+				}
+			}
+			
+			displayedConnections++;
+			if (displayedConnections > this.config.maximumEntries){
+				break;
+			}
 			var row = document.createElement("tr");
 			table.appendChild(row);
 			
 			// Time
-			var dTime = moment(trains.departureTimestampRaw);
-			var diff = dTime.diff(currentTime, 'minutes');
+			
 
 			var depCell = document.createElement("td");
 			depCell.className = "align-left departuretime";
 			depCell.innerHTML = trains.departureTimestamp;
 
-			if (diff < this.config.minWalkingTime ){
-				row.className = "darkgrey";
-			}
+			if(trains.delay > 0){
+				if (diff + trains.delay < this.config.minWalkingTime ){
+					row.className = "darkgrey";
+					}
+				} else if (diff < this.config.minWalkingTime ){
+					row.className = "darkgrey";
+				}
 
 			row.appendChild(depCell);
 
@@ -130,7 +151,7 @@ Module.register("MMM-SwissStationboard",{
 				trainNumberCell.innerHTML = "<i class=\"fa fa-bus\"></i> " + trains.number;
 			} else if(trains.type.localeCompare("tram")==0){
 				trainNumberCell.innerHTML = "<i class=\"fa fa-subway\"></i> " + trains.number;
-			}else if(trains.type.localeCompare("strain")==0 || trains.type.localeCompare("express_train")==0){
+			}else if(trains.type.localeCompare("strain")==0 || trains.type.localeCompare("express_train")==0 || trains.type.localeCompare("train")==0){
 				trainNumberCell.innerHTML = "<i class=\"fa fa-train\"></i> " + trains.number;
 			}else{
 				trainNumberCell.innerHTML = "<i class=\"fa fa-rocket\"></i> " + trains.number;
@@ -214,8 +235,11 @@ Module.register("MMM-SwissStationboard",{
 	getParams: function() {
 		var params = "?show_delays=1&show_trackchanges=1&show_tracks=1&";
         params += "stop=" + this.config.stop;
-		params += "&limit=" + this.config.maximumEntries;
-                
+		if(this.config.hideNotReachable){
+			params += "&limit=" + (this.config.maximumEntries + 50*this.config.minWalkingTime);
+                } else{
+			params += "&limit=" + this.config.maximumEntries;
+		}
 		return params;
 	},
 

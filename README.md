@@ -38,7 +38,8 @@ modules: [
 		config: {
 			stop: 'Bern', // Start train station
 			maximumEntries: 4, // Max departures displayed
-			minWalkingTime: 10 // Minimum time to get to the station
+			minWalkingTime: 10, // Minimum time to get to the station
+			hideNotReachable: 0, //Will hide all the not reachable connections
 		}
 	},
 ]
@@ -52,6 +53,7 @@ modules: [
 | `maximumEntries `        | *Optional* Maximum number of entries in list <br><br>**Type:** `int` <br>Default 10
 | `minWalkingTime `        | *Optional* Minimum time in minutes to reach the `stop` station. Used to display the connection in dark grey in case it is not reachable in time<br><br>**Type:** `int` <br>Default -1
 | `hideTrackInfo`        | *Optional* Hide the track column <br><br>**Type:** `int` <br>Default 0
+| `hideNotReachable`        | *Optional* Hide the connections that are not reachable within walking time <br><br>**Type:** `int` <br>Default 0
 
 ## Dependencies
 
