@@ -256,7 +256,7 @@ Module.register("MMM-SwissStationboard",{
 			for (var i = 0, count = data.connections.length; i < count; i++) {
 				var trains = data.connections[i];
 
-				if("time" in trains && "terminal" in trains && "line" in trains) {
+				if("time" in trains && "terminal" in trains) {
 					
 					var conn = {
 						departureTimestampRaw: trains.time,
@@ -267,7 +267,10 @@ Module.register("MMM-SwissStationboard",{
 						track: trains.track,
 						type: trains.type
 					};
-				
+					
+					if (typeof conn.number == 'undefined'){
+						conn.number = trains.number;
+					}
 					if (typeof conn.track != 'undefined') {
 						conn.trackChange = conn.track.indexOf("!") > 0;
 					}
