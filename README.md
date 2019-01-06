@@ -54,6 +54,8 @@ modules: [
 | `minWalkingTime `        | *Optional* Minimum time in minutes to reach the `stop` station. Used to display the connection in dark grey in case it is not reachable in time<br><br>**Type:** `int` <br>Default -1
 | `hideTrackInfo`        | *Optional* Hide the track column <br><br>**Type:** `int` <br>Default 0
 | `hideNotReachable`        | *Optional* Hide the connections that are not reachable within walking time <br><br>**Type:** `int` <br>Default 0
+| `fade`                       | Fade the future events to black. (Gradient) <br><br> **Possible values:** `true` or `false` <br> **Default value:** `true`
+
 
 ## Dependencies
 
